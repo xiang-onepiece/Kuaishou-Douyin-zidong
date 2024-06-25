@@ -23,7 +23,7 @@ def getSize(series):
     print(cmd)
     size_str = os.popen(cmd).read()
     if not size_str:
-        print('请安装 ADB 及驱动并配置环境变量'.decode('utf-8').encode(type))
+        print('请安装 ADB 及驱动并配置环境变量')
         sys.exit()
     m = re.search(r'(\d+)x(\d+)', size_str)
     if m:
@@ -55,12 +55,12 @@ def swipeUp(series, screensize, t):
 
 def liulan(series):  # 无限循环看视频
     screensize = getSize(series)
-    print("屏幕宽度".decode('utf-8').encode(type), screensize[0][0])
-    print("屏幕高度".decode('utf-8').encode(type), screensize[0][1])
-    print("进入循环操作...".decode('utf-8').encode(type))
+    print("屏幕宽度:", screensize[0][0])
+    print("屏幕高度:", screensize[0][1])
+    print("进入循环操作...")
     while True:
-        t4 = randint(40, 60)  # 随机看视频时间，防封
-        print('等待'.decode('utf-8').encode(type), t4, '秒进入下一个视频'.decode('utf-8').encode(type))
+        t4 = randint(40, 80)  # 随机看视频时间，防封
+        print('等待', t4, '秒进入下一个视频')
         time.sleep(t4)
         swipeUp(series, screensize, 1000)
 
@@ -80,7 +80,7 @@ def run():
     for i in range(1, devices_counts - 1):
         device_info = devices.splitlines()[i]
         device_series = device_info.split()[0]
-        print('设备ID:' + device_series)
+        print('设备ID:', device_series)
         piliang(device_series)
 
 
